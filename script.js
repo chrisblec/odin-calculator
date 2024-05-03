@@ -9,14 +9,18 @@ let total = "";
 function buttonAction(value, type) {
     switch (type) {
         case "number":
-            if (currentNumber == 0) currentNumber = "";
-            currentNumber += value,
+            if (value == 0 && currentNumber == 0) {
+                currentNumber = "";
+            } else {
+                currentNumber += Number(value);
+            }
+            console.log(currentNumber);
             display.textContent = currentNumber;
             break;
         case "decimal":
             if (currentNumber == 0) currentNumber = "";
             if (currentNumber > Math.floor(currentNumber)) break;
-            currentNumber += value,
+            currentNumber += Number(value),
             display.textContent = currentNumber;
             break;
         case "operator":
@@ -42,7 +46,6 @@ function buttonAction(value, type) {
             currentNumber *= .01;
             display.textContent = currentNumber;
             break;
-
         case "+/-":
             currentNumber = -Math.abs(currentNumber);
             display.textContent = currentNumber;
